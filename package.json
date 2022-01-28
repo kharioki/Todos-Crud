@@ -1,0 +1,32 @@
+{
+  "name": "todos-crud-contract",
+  "version": "1.0.0",
+  "description": "a standard crud app on the Near blockchain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kharioki/Todos-Crud.git"
+  },
+  "keywords": [
+    "CRUD",
+    "smart",
+    "contract",
+    "NEAR"
+  ],
+  "author": "kharioki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kharioki/Todos-Crud/issues"
+  },
+  "homepage": "https://github.com/kharioki/Todos-Crud#readme",
+  "dependencies": {
+    "@assemblyscript/loader": "^0.19.22",
+    "asbuild": "^0.2.0",
+    "assemblyscript": "^0.19.22",
+    "near-cli": "^3.1.0",
+    "near-sdk-as": "^3.2.3"
+  }
+}

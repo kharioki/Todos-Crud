@@ -8,6 +8,8 @@ import * as nearAPI from 'near-api-js';
 async function initContract() {
   const nearConfig = getConfig(process.env.NODE_ENV || 'testnet');
 
+  console.log({ nearConfig })
+
   // initialize connection to the NEAR Testnet
   const near = await nearAPI.connect({
     deps: {
@@ -16,8 +18,14 @@ async function initContract() {
     ...nearConfig,
   });
 
+  console.log({ near })
+
+
   // Needed to access wallet
   const walletConnection = new nearAPI.WalletConnection(near);
+
+  console.log({ walletConnection })
+
 
   // Load in account data
   let currentUser;

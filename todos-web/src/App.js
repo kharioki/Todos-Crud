@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime';
 import React from 'react';
 import PropTypes from 'prop-types';
 import CreateTodo from './components/CreateTodo';
-import TodoList from './components/TodoList';
+// import TodoList from './components/TodoList';
 
 function App({ contract, currentUser, nearConfig, wallet }) {
   const signIn = () => {
@@ -26,7 +26,7 @@ function App({ contract, currentUser, nearConfig, wallet }) {
           </h2>
 
           <CreateTodo contract={contract} />
-          <TodoList contract={contract} />
+          {/* <TodoList contract={contract} /> */}
         </div>
       ) : (
         <div>

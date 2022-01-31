@@ -1,4 +1,4 @@
-import { create, getById, get } from "../index";
+import { create, getById, get, update } from "../index";
 import { Todo, todos } from "../model";
 
 
@@ -33,6 +33,18 @@ describe('contract methods', () => {
     expect(get(0, 10)).toStrictEqual(todos.slice(0, 10));
     expect(get(10, 10)).toStrictEqual(todos.slice(10, 20));
     expect(get(50, 50)).toStrictEqual(todos.slice(50, 100));
+  });
+
+  it('updates a todo', () => {
+    const todo = Todo.insert('Drink water');
+
+    update(todo.id, { task: 'Drink coffee', done: true });
+
+    const todoAfterUpdate = Todo.findById(todo.id);
+
+    expect(todoAfterUpdate.id).toStrictEqual(todo.id);
+    expect(todoAfterUpdate.task).toStrictEqual('Drink coffee');
+    expect(todoAfterUpdate.done).toStrictEqual(true);
   });
   
 });

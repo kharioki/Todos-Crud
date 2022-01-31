@@ -10,6 +10,12 @@ export const todos = new PersistentUnorderedMap<u32, Todo>("todos");
 // also contain static methods to read and write data from and to the todos PersistentUnorderedMap.
 
 @nearBindgen
+export class PartialTodo {
+    task: string;
+    done: bool;
+}
+
+@nearBindgen
 export class Todo {
     id: u32;
     task: string;
@@ -46,5 +52,19 @@ export class Todo {
         // until we reach the offset + limit todo.
         // For example, if offset is 10 and limit is 3 then this would return the 10th, 11th, and 12th todo.
         return todos.values(offset, offset + limit);
+    }
+
+    static findByIdAndUpdate(id: u32, partial: PartialTodo): Todo {
+        // find a todo by its id
+        const todo = this.findById(id);
+
+        // update the todo-in-memory
+        todo.task = partial.task;
+        todo.done = partial.done;
+
+        // persist the updated todo
+        todos.set(id, todo);
+
+        return todo;
     }
 }

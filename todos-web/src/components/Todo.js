@@ -8,12 +8,18 @@ export function Todo({ contract, id, task, done }) {
     contract.update({ id, updates: { task, done: target.checked } });
   };
 
+  const del = () => {
+    // on clicking the delete button invoke the del method on the smart contract
+    contract.del({ id });
+  }
+
   return (
     <>
       <p>
         <input type="checkbox" checked={checked} onChange={complete} />
         {task}
       </p>
+      <button onClick={del}>delete</button>
     </>
   );
 }

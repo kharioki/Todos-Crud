@@ -32,4 +32,19 @@ export class Todo {
 
         return todo;
     }
+
+    static findById(id: u32): Todo {
+        // get the todo from the PersistentUnorderedMap
+        // where the key is the todo's id and the value is the todo itself.
+        // Think of it like a SELECT statement in SQL
+        return todos.getSome(id);
+    }
+
+    static find(offset: u32, limit: u32): Todo[] {
+        // the PersistentUnorderedMap values method will take two parameters: start and end.
+        // we'll start at the offset(skipping all todos before the offset) and collect all todos 
+        // until we reach the offset + limit todo.
+        // For example, if offset is 10 and limit is 3 then this would return the 10th, 11th, and 12th todo.
+        return todos.values(offset, offset + limit);
+    }
 }

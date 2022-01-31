@@ -67,4 +67,8 @@ export class Todo {
 
         return todo;
     }
+
+    static findByIdAndDelete(id: u32): void {
+        todos.delete(id);
+    }
 }

@@ -1,4 +1,4 @@
-import { create, getById, get, update } from "../index";
+import { create, getById, get, update, del } from "../index";
 import { Todo, todos } from "../model";
 
 
@@ -45,6 +45,15 @@ describe('contract methods', () => {
     expect(todoAfterUpdate.id).toStrictEqual(todo.id);
     expect(todoAfterUpdate.task).toStrictEqual('Drink coffee');
     expect(todoAfterUpdate.done).toStrictEqual(true);
+  });
+
+  itThrows('deletes a todo', () => {
+    const todo = Todo.insert('Drink water');
+
+    // delete the todo
+    del(todo.id);
+
+    Todo.findById(todo.id);
   });
   
 });
